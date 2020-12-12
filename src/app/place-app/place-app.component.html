@@ -1,0 +1,266 @@
+<div class="container pt-5" >
+    <form [formGroup]="appointmentForm" action="#" class="form" (ngSubmit)="onFormSubmit()">
+    
+        <label for="name">Enter Name</label>
+        <table id="name" class="full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput required formControlName="fname" >
+                        <mat-error *ngIf="f.fname.hasError('pattern')">
+                            Enter only alphabets
+                        </mat-error>
+                        <mat-error *ngIf="f.fname.hasError('required')">
+                            First name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" formControlName="lname">
+                        <mat-error *ngIf="f.lname.hasError('pattern')">
+                            Enter only alphabets
+                        </mat-error>
+                        <mat-error *ngIf="f.lname.hasError('required')">
+                            Last name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        
+        <fieldset>
+        <!-- Shipping Address -->
+        <div formGroupName="address">
+            <label for="shippingaddress">Shipping Address</label>
+            <p id="shippingaddress">
+                <mat-form-field class="full-width">
+                    <mat-label>Street Address</mat-label>
+                    <textarea matInput placeholder="Ex. 100 Main St" formControlName="street"></textarea>
+                    <mat-error *ngIf="f.address['controls'].street.hasError('required')">
+                        Address Required
+                    </mat-error>
+                </mat-form-field>
+            </p>
+        
+            <!-- for city,state and postal code -->
+            <table class="full-width">
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <mat-label>City</mat-label>
+                            <input matInput type="text" required formControlName="city">
+                            <mat-error *ngIf="f.address['controls'].city.hasError('required')">
+                                City Required
+                            </mat-error>
+                            <mat-error *ngIf="f.address['controls'].city.hasError('pattern')">
+                                City can't be a number 
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <mat-label>State</mat-label>
+                            <input matInput formControlName="state">
+                            <mat-error *ngIf="f.address['controls'].state.hasError('required')">
+                                City Required
+                            </mat-error>
+                            <mat-error *ngIf="f.address['controls'].state.hasError('pattern')">
+                                State can't be a number 
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Country</mat-label>
+                            <mat-select formControlName="country" required>
+                                <mat-option None>--</mat-option>
+                                <mat-option *ngFor="let country of countries" [value]="country">
+                                    {{country}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="f.address['controls'].state.hasError('required')">Please choose a Country</mat-error>
+                        </mat-form-field>
+                    </td>
+        
+                    <td>
+                        <mat-form-field class="full-width">
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput #postalCode formControlName="postal" maxlength="6" placeholder="Ex. 94105" value="">
+                            <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
+                            <mat-error *ngIf="f.address['controls'].postal.hasError('pattern')">
+                                Enter proper zip code
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </fieldset>
+        <!-- END of Address -->
+
+
+        <!-- Buyer's Details -->
+        <label for="name">Buyer's name</label>
+        <table id="name" class="full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput required formControlName="bfname">
+                        <mat-error *ngIf="f.bfname.hasError('pattern')">
+                            Enter only alphabets
+                        </mat-error>
+                        <mat-error *ngIf="f.bfname.hasError('required')">
+                            First name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="blname">
+                        <mat-error *ngIf="f.blname.hasError('pattern')">
+                            Enter only alphabets
+                        </mat-error>
+                        <mat-error *ngIf="f.blname.hasError('required')">
+                            Last name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    
+        <table class="full-width" cellspacing="0">
+            <tr>
+                <td style="vertical-align:bottom">
+                    <h4>Mobile No.</h4>
+                </td>
+    
+                <td>
+                    <mat-form-field class="full-width">
+                        <mat-label>Telephone</mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" #mobVal value="" matInput maxlength="10" formControlName="mob" placeholder="959-555-1234">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                        <mat-hint align="end">{{mobVal.value.length}} / 10</mat-hint>
+                        <mat-error *ngIf="f.mob.hasError('pattern')">
+                            Enter digits only
+                        </mat-error>
+                        <mat-error *ngIf="f.mob.hasError('required')">
+                            Mobile no. is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    
+        <table class="full-width" cellspacing="0">
+            <!-- Email Id Age -->
+            <tr>
+                <td>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="f.email.hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="f.email.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+                <td style="text-align:right;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Age</mat-label>
+                        <input matInput  formControlName="age" #ageVal>
+                        <mat-error *ngIf="f.age.hasError('required')">
+                            Age is required
+                        </mat-error>
+                        <mat-error *ngIf="f.age.errors?.max || f.age.errors?.min">>
+                            Enter age between 18-80 yrs
+                        </mat-error>
+                        
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    
+        <!-- Trainee Preferenve -->
+        <label id="radio-group-label">Trainee Preference</label>
+        <mat-radio-group color="primary" formControlName="tpreference"  aria-labelledby="radio-group-label" class="radio-group">
+    
+            <mat-radio-button *ngFor="let preference of preferences" class="radio-button" [value]="preference">
+                {{preference}}
+            </mat-radio-button>
+            <mat-error *ngIf="f.tpreference.hasError('required')">
+                Please choose trainee preference
+            </mat-error>
+        </mat-radio-group>
+    
+        <!-- Physio Therapist -->
+        <label id="radio-group-label">Do you need Physio Therapist</label><br>
+        <mat-radio-group color="primary" formControlName="physio" aria-label="Select an option">
+            <mat-radio-button value="Yes">Yes</mat-radio-button>
+            <mat-radio-button value="No">No</mat-radio-button>
+            <mat-error *ngIf="f.physio.hasError('required')">
+                Please choose 
+            </mat-error>
+        </mat-radio-group>
+    
+        <br><br>
+        <label>Select a package</label><br>
+        <mat-radio-group color="primary" formControlName="package" aria-label="Select an option">
+            <p>
+                <mat-radio-button value="OneTimeAss" (click)="calcAmount(500)">
+                    One time Assesment only (rs. 500 only)
+                </mat-radio-button>
+            </p>
+            <p>
+                <mat-radio-button value="4session/week" (click)="calcAmount(400)">
+                    4 Sessions per Week (rs. 400 per session)
+                </mat-radio-button>
+            </p>
+            <p>
+                <mat-radio-button value="5session/week" (click)="calcAmount(300)">
+                    5 Sessions per Week (rs. 300 per session)
+                </mat-radio-button>
+            </p>
+            <p>
+                <mat-radio-button value="other" (click)="calcAmount(f.package.value)">
+                    other
+                </mat-radio-button>
+            </p>
+            <mat-error *ngIf="f.package.hasError('required')">
+                Please choose trainee preference
+            </mat-error>
+        </mat-radio-group>
+        <br>
+    
+    
+        <!-- Amount Calculated -->
+        <label>AMOUNT</label><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Rupees</mat-label>
+            <input matInput type="number" readonly class="right-align" value={{amount}}>
+            <span matPrefix>₹&nbsp;</span>
+            <span matSuffix>.00</span>
+        </mat-form-field>
+    
+        <!-- Submit Button -->
+        <div style="text-align: center;  ">
+            <button mat-raised-button mat-stroked-button aria-label="Show an example snack-bar" type="submit">SUBMIT REQUEST</button>
+        </div>
+
+        <!-- <div style="text-align: center;  ">
+            <button mat-raised-button type="button" (click)="getData()">get REQUEST</button>
+        </div> -->
+    
+    </form>
+</div>

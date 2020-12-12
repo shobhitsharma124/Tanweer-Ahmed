@@ -1,0 +1,13 @@
+.active{
+    background:#f44336;
+}
+
+.mat-tab-group {
+    color: black;
+    background-color:white;
+  }
+
+
+.mat-tab-label {
+    color: black;
+}

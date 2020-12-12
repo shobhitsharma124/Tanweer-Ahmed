@@ -1,0 +1,87 @@
+
+
+
+
+<div class="container bg-info">
+    <app-header></app-header>
+    <hr style="height: 3px;" class="bg-dark">
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 bg-warning h-100">
+                <nav class="nav nav-pills nav-fill  flex-column">
+                    <button (click)="demo1BtnClick(0)" [ngClass]="{'active':tabIndex==0}" mat-raised-button class="mt-3 mb-4">
+                        <mat-icon>home</mat-icon>                        
+                        HOME
+                    </button>
+                    <button (click)="demo1BtnClick(1)" [ngClass]="{'active':tabIndex==1}" mat-raised-button class="mt-5 mb-5">
+                        <mat-icon>receipt</mat-icon>  
+                        PLACE APP
+                    </button>
+                    <button (click)="demo1BtnClick(2)" [ngClass]="{'active':tabIndex==2}" mat-raised-button class="mt-5 mb-5">
+                        <mat-icon>import_contacts</mat-icon>  
+                        VIEW APP
+                    </button>
+                    <button (click)="demo1BtnClick(3)" [ngClass]="{'active':tabIndex==3}" mat-raised-button class="mt-5 mb-5">
+                        <mat-icon>search</mat-icon>  
+                        SEARCH
+                    </button>
+                    <button (click)="demo1BtnClick(4)" [ngClass]="{'active':tabIndex==4}" mat-raised-button class="mt-5 mb-5">
+                        <mat-icon>contact_page</mat-icon>  
+                        CONTACT
+                    </button>
+                </nav>
+            </div>
+            <div style="margin-left: 25p;" class="col-10 d-flex justify-content-center bg-info">
+                <div class="container-fluid">
+                    <div class="row h-100">
+                        <div class="col" style="background-color: lightblue;">
+                            <div>
+                                <mat-tab-group  [(selectedIndex)]="tabIndex" animationDuration="2000ms">
+                                    <mat-tab>
+                                        <ng-template mat-tab-label>
+                                            <mat-icon>home</mat-icon>
+                                            <span  class="ml-2" >HOME</span> 
+                                        </ng-template>
+                                       <app-home></app-home>
+                                        
+                                    </mat-tab>
+                                    <mat-tab >
+                                        <ng-template mat-tab-label>
+                                            <mat-icon>receipt</mat-icon>
+                                            <span  class="ml-2">PLACE APP</span> 
+                                        </ng-template>
+                                        <app-place-app ></app-place-app>            
+                                    </mat-tab>
+                                    <mat-tab>
+                                        <ng-template mat-tab-label>
+                                            <mat-icon>import_contacts</mat-icon>
+                                            <span  class="ml-2" >VIEW APP</span> 
+                                        </ng-template>
+                                        <app-search [tabVal]="tabIndex"></app-search>
+                                    </mat-tab>
+                                    <mat-tab >
+                                        <ng-template mat-tab-label>
+                                            <mat-icon>search</mat-icon>
+                                            <span  class="ml-2" >SEARCH</span> 
+                                        </ng-template>
+                                        <app-search [tabVal]="tabIndex"></app-search>
+                                    </mat-tab>
+                                    <mat-tab>
+                                        <ng-template mat-tab-label>
+                                            <mat-icon>contact_page</mat-icon>
+                                            <span class="ml-2">Contact</span> 
+                                        </ng-template>
+                                        <app-contact></app-contact>
+                                    </mat-tab>
+                                  </mat-tab-group>
+                            </div>
+
+                        </div>    
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+</div>

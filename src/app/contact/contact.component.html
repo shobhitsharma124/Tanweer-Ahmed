@@ -1,0 +1,81 @@
+<div class="container pt-5" >
+    <form [formGroup]="contactForm" action="#" class="form" (ngSubmit)="onFormSubmit()">
+    
+        <label for="name">Enter Name</label>
+        <table id="name" class="full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput required formControlName="fname" >
+                        <mat-error *ngIf="f.fname.hasError('pattern')">
+                            Enter only alphabets
+                        </mat-error>
+                        <mat-error *ngIf="f.fname.hasError('required')">
+                            First name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" formControlName="lname">
+                        <mat-error *ngIf="f.lname.hasError('pattern')">
+                            Enter only alphabets
+                        </mat-error>
+                        <mat-error *ngIf="f.lname.hasError('Pa')">
+                            Last name is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <table class="full-width" cellspacing="0">
+            <!-- Email Id Age -->
+            <tr>
+                <td>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="f.email.hasError('email')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="f.email.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+                <td style="text-align:right;">
+                    <mat-form-field class="full-width">
+                        <mat-label>Telephone</mat-label>
+                        <span matPrefix>+91 &nbsp;</span>
+                        <input type="tel" #mobVal value="" matInput maxlength="10" formControlName="mob" placeholder="959-555-1234">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                        <mat-hint align="end">{{mobVal.value.length}} / 10</mat-hint>
+                        <mat-error *ngIf="f.mob.hasError('pattern')">
+                            Enter digits only
+                        </mat-error>
+                        <mat-error *ngIf="f.mob.hasError('required')">
+                            Mobile no. is required
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        
+        <label for="message">Message</label>
+            <p id="message">
+                <mat-form-field class="full-width">
+                    <mat-label>Leave Your Message Here</mat-label>
+                    <textarea matInput placeholder="I would Like to Bargain" formControlName="message"></textarea>
+                </mat-form-field>
+            </p>
+
+            <div style="text-align: center;  ">
+                <button mat-raised-button mat-stroked-button aria-label="Show an example snack-bar" type="submit">SUBMIT REQUEST</button>
+            </div>
+        
+    </form>
+</div>

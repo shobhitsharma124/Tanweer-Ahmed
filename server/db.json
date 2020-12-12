@@ -1,0 +1,50 @@
+{
+  "appointment": [
+    {
+      "sno": "1",
+      "name": "Tanweer Ahmed",
+      "city": "Pune",
+      "mobile": "1111111111",
+      "tpreference": "Male Trainee",
+      "package": "other",
+      "id": 1
+    },
+    {
+      "sno": "2",
+      "name": "Cristiano Ronaldo",
+      "city": "Pune",
+      "mobile": "1111111113",
+      "tpreference": "Female Trainee",
+      "package": "other",
+      "id": 1
+    },
+    {
+      "sno": "3",
+      "name": "Lionel Messi",
+      "city": "Pune",
+      "mobile": "1111111188",
+      "tpreference": "Male Trainee",
+      "package": "other",
+      "id": 1
+    },
+    {
+      "sno": "4",
+      "name": "Charliee Cast",
+      "city": "Pune",
+      "mobile": "1111111119",
+      "tpreference": "Female Trainee",
+      "package": "other",
+      "id": 1
+    },
+    {
+      "sno": "5",
+      "name": "Picasso Picasso",
+      "city": "Pune",
+      "mobile": "1111111119",
+      "tpreference": "Female Trainee",
+      "package": "other",
+      "id": 1
+    }
+  ],
+  "contacted": [ ]
+}

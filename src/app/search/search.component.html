@@ -1,0 +1,64 @@
+
+  <mat-form-field *ngIf="tabVal==3">
+    <mat-label class="h5">Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input value=" ">
+    
+  </mat-form-field>
+
+  <div *ngIf="tabVal==3" class="container-fluid" style="text-align: center;">
+    <p class="h5" >Filter</p>
+    <button mat-raised-button class="ml-5" (click)="searchMaleT()">Male</button>
+    <button mat-raised-button class="ml-5" (click)="searchFemaleT()">Female</button>
+    <button mat-raised-button class="ml-5" (click)="searchComplete()">Complete Data</button>
+    <br>
+    <br>
+  </div>
+  
+  
+  
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="sno">
+        <th mat-header-cell *matHeaderCellDef> S No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.sno}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+     <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- City Column -->
+     <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> City </th>
+      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+    </ng-container>
+   
+    <!-- Package Column -->
+    <ng-container matColumnDef="package">
+      <th mat-header-cell *matHeaderCellDef> Package </th>
+      <td mat-cell *matCellDef="let element"> {{element.package}} </td>
+    </ng-container>
+  
+    <!-- Trainee Preference Column -->
+    <ng-container matColumnDef="tpreference">
+      <th mat-header-cell *matHeaderCellDef> Trainee Preference </th>
+      <td mat-cell *matCellDef="let element"> {{element.tpreference}} </td>
+    </ng-container>
+
+     <!-- Phone Column -->
+     <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
